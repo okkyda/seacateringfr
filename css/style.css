@@ -411,6 +411,229 @@ body{
     color:var(--primary)
 }
 
+.meal-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10rem 1rem 4rem 1rem;
+}
+.meal-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: whitesmoke;
+}
+
+.meal-section .meals{
+    display: flex;
+    justify-content: start;
+    
+}
+
+.meal-section .meals h2{
+    color: var(--primary);
+}
+.meal-cards {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* overflow-x: auto; */
+    padding-bottom: 1rem;
+    /* scroll-snap-type: x mandatory; */
+    margin-bottom: 30px;
+}
+.meal-card {
+    background: #222;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    min-width: 300px;
+    max-width: 320px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.2s;
+    scroll-snap-align: start;
+}
+.meal-card:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+.meal-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.meal-card-body {
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+.meal-card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #FFD600;
+    margin-bottom: 0.5rem;
+}
+.meal-card-price {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.7rem;
+}
+.meal-card-desc {
+    font-size: 1rem;
+    color: #eee;
+    margin-bottom: 1.2rem;
+}
+.btn-details {
+    background: #FFD600;
+    color: #222;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.btn-details:hover {
+    background: #ffc400;
+}
+
+.btn-subs{
+     background: #FFD600;
+    color: #222;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 1px 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 4px;   
+}
+
+.btn-subs:hover {
+     background: #ffc400;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+.modal.active {
+    display: flex;
+}
+.modal-content {
+    background: #222;
+    border-radius: 18px;
+    max-width: 95vw;
+    width: 400px;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    position: relative;
+    color: #fff;
+    animation: popIn 0.2s;
+}
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: none;
+    color: #FFD600;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.modal-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #FFD600;
+    margin-bottom: 0.5rem;
+}
+.modal-price {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.7rem;
+}
+.modal-desc {
+    font-size: 1rem;
+    color: #eee;
+    margin-bottom: 1.2rem;
+}
+.modal-extra {
+    font-size: 1rem;
+    color: #FFD600;
+    margin-bottom: 0.5rem;
+}
+
+/* Customer Review Section */
+.review {
+    background: #181818;
+    padding: 3rem 1rem 3rem 1rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.review h2 {
+    color: #FFD600;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+.review-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.review-card {
+    background: #222;
+    color: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 1.2rem;
+    max-width: 320px;
+    min-width: 220px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    margin-bottom: 1rem;
+}
+.review-text {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+.review-author {
+    color: #FFD600;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 1.2rem 0;
+    font-size: 1rem;
+    margin-top: 0;
+}
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 
 
 
@@ -538,6 +761,29 @@ body{
 
     .contact .row .map{
         height: 30rem;
+    }
+
+     .meal-section h2 {
+        font-size: 2rem;
+    }
+    .meal-cards {
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+    }
+    .meal-card {
+        min-width: 85vw;
+        max-width: 90vw;
+    }
+    .modal-content {
+        width: 95vw;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    }
+
+    .btn-subs{
+        margin-bottom: 10px;
+        margin-top: -1px;
+        height: 23px;
+        border-radius: 1;
     }
 
    
