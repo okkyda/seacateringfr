@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SEA Catering</title>
+    <title>Register - SEA Catering</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/subscription.css">
     <!-- Icons -->
@@ -14,21 +14,38 @@
 <body>
     <section class="hero" id="home-login">
         <section class="login-section">
-            <h2>Login Your Account</h2>
+            <h2>Register Your Self</h2>
             <form class="login-form" id="loginForm" autocomplete="off">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required placeholder="Username">
+                    <label for="name">Username</label>
+                    <input type="text" id="name" name="name" required placeholder="Username">
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Password">
-                </div>
-                <a href="#">Forgot Password?</a>
-                <a href="register.html" class="btn-register">Register</a>
-                <button type="submit" class="btn-login">Login</button>
-            </form>
 
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="text" id="email" name="email" required placeholder="Email">
+                </div>
+
+                 <div class="form-group">
+                <label for="phone">Active Phone Number</label>
+                <input type="text" id="phone" name="phone" required placeholder="08xxxxxxxxxx" pattern="08[0-9]{8,12}">
+            </div>
+
+                <div class="form-group">
+                    <label for="name">Password</label>
+                    <input type="password" id="name" name="name" required placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Ulangi Password</label>
+                    <input type="password" id="name" name="name" required placeholder="Password">
+                </div>
+
+                <a href="#">Forgot Password?</a>
+                <button type="submit" class="btn-register">Register</button>
+               
+            </form>
+            
             <div id="form-message" class="form-message"></div>
             <!-- Modal Konfirmasi -->
             <div id="confirmModal" class="modal-confirm">
@@ -81,8 +98,8 @@
             <button type="submit" class="btn-login">Login</button>
         </form> -->
 
-    <!-- Modal Konfirmasi -->
-    <!-- <div id="form-message" class="form-message"></div>
+         <!-- Modal Konfirmasi -->
+        <!-- <div id="form-message" class="form-message"></div>
        
         <div id="confirmModal" class="modal-confirm">
             <div class="modal-confirm-content">

@@ -857,9 +857,11 @@ background: #ffc400;
 }
 
 .btn-register, .btn-login{
+    display: flex;
+    justify-content: center;
      width: 100%;
     background:var(--primary);
-    color: #222;
+    color: whitesmoke;
     font-weight: bold;
     border: none;
     border-radius: 20px;
@@ -871,8 +873,8 @@ background: #ffc400;
 }
 
 .login-form .btn-register:hover, .login-form .btn-login:hover {
-     background: #ffc400;
-      color: #000;
+    background: #ffc400;
+    color: #000;
     cursor: pointer;
 }
 
@@ -936,6 +938,7 @@ background: #ffc400;
         align-items: flex-start;
         padding: 2rem;
         transition: 0.5s;
+         z-index: 9999;
     }
 
     
