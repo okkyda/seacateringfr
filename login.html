@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <section class="hero" id="home-login">
+
+    <div class="logins">
         <section class="login-section">
             <h2>Login Your Account</h2>
             <form class="login-form" id="loginForm" autocomplete="off">
@@ -22,11 +23,15 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Password">
+                    <input type="password" id="password" name="password" required placeholder="Enter your password"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                        title="Password must be at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character.">
                 </div>
-                <a href="#">Forgot Password?</a>
+
+
                 <a href="register.html" class="btn-register">Register</a>
                 <button type="submit" class="btn-login">Login</button>
+
             </form>
 
             <div id="form-message" class="form-message"></div>
@@ -41,17 +46,19 @@
                 </div>
             </div>
         </section>
-    </section>
+    </div>
+
+
 
     <!-- Navbar -->
     <nav class="navbar">
         <a href="#" class="nav-logo">SEA<span> Catering</span></a>
         <div class="navbar-nav">
             <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
+            <a href="index.html#about">About Us</a>
             <a href="meals.html">Meal</a>
-            <a href="contact.html">Catch Us!</a>
-            <a href="subscripsion.html">Subscription</a>
+            <a href="catchus.html">Catch Us!</a>
+            <a href="subscription.html">Subscription</a>
             <a href="login.html" class="login-mobile">Login</a>
         </div>
         <!-- <a href="login.html" class="login-desktop">Login</a> -->

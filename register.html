@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <section class="hero" id="home-login">
+    <div class="logins">
         <section class="login-section">
-            <h2>Register Your Self</h2>
+            <h2>Register Yourself</h2>
             <form class="login-form" id="loginForm" autocomplete="off">
                 <div class="form-group">
                     <label for="name">Username</label>
@@ -26,26 +26,33 @@
                     <input type="text" id="email" name="email" required placeholder="Email">
                 </div>
 
-                 <div class="form-group">
-                <label for="phone">Active Phone Number</label>
-                <input type="text" id="phone" name="phone" required placeholder="08xxxxxxxxxx" pattern="08[0-9]{8,12}">
-            </div>
-
                 <div class="form-group">
-                    <label for="name">Password</label>
-                    <input type="password" id="name" name="name" required placeholder="Password">
+                    <label for="phone">Active Phone Number</label>
+                    <input type="text" id="phone" name="phone" required placeholder="08xxxxxxxxxx"
+                        pattern="08[0-9]{8,12}">
                 </div>
 
                 <div class="form-group">
-                    <label for="name">Ulangi Password</label>
-                    <input type="password" id="name" name="name" required placeholder="Password">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                        title="Password must be at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character.">
                 </div>
 
-                <a href="#">Forgot Password?</a>
+
+                <div class="form-group">
+                    <label for="password">Repeat Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                        title="Password must be at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character.">
+                </div>
+
+
+
                 <button type="submit" class="btn-register">Register</button>
-               
+
             </form>
-            
+
             <div id="form-message" class="form-message"></div>
             <!-- Modal Konfirmasi -->
             <div id="confirmModal" class="modal-confirm">
@@ -58,17 +65,17 @@
                 </div>
             </div>
         </section>
-    </section>
+    </div>
 
     <!-- Navbar -->
     <nav class="navbar">
         <a href="#" class="nav-logo">SEA<span> Catering</span></a>
         <div class="navbar-nav">
             <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
+            <a href="index.html#about">About Us</a>
             <a href="meals.html">Meal</a>
-            <a href="contact.html">Catch Us!</a>
-            <a href="subscripsion.html">Subscription</a>
+            <a href="catchus.html">Catch Us!</a>
+            <a href="subscription.html">Subscription</a>
             <a href="login.html" class="login-mobile">Login</a>
         </div>
         <!-- <a href="login.html" class="login-desktop">Login</a> -->
@@ -98,8 +105,8 @@
             <button type="submit" class="btn-login">Login</button>
         </form> -->
 
-         <!-- Modal Konfirmasi -->
-        <!-- <div id="form-message" class="form-message"></div>
+    <!-- Modal Konfirmasi -->
+    <!-- <div id="form-message" class="form-message"></div>
        
         <div id="confirmModal" class="modal-confirm">
             <div class="modal-confirm-content">
