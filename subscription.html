@@ -35,8 +35,8 @@
             <h2>Subscribe to Your Meal Plan</h2>
             <form class="subscription-form" id="subscriptionForm" autocomplete="off">
                 <div class="form-group">
-                    <label for="name">*Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Full Name">
+                    <label for="name">*Username</label>
+                    <input type="text" id="username" name="name" required placeholder="Full Name">
                 </div>
                 <div class="form-group">
                     <label for="phone">*Active Phone Number</label>
@@ -54,15 +54,17 @@
                 </div>
                 <div class="form-group">
                     <label>*Meal Type</label>
+                     <small class="hint">Select at least one meal type.</small>
                     <div class="checkbox-group">
                         <label><input type="checkbox" name="mealType" value="Breakfast" required> Breakfast</label>
                         <label><input type="checkbox" name="mealType" value="Lunch"> Lunch</label>
                         <label><input type="checkbox" name="mealType" value="Dinner"> Dinner</label>
                     </div>
-                    <small class="hint">Select at least one meal type.</small>
+                   
                 </div>
                 <div class="form-group">
                     <label>*Delivery Days</label>
+                     <small class="hint">Select one or more days for delivery.</small>
                     <div class="checkbox-group days">
                         <label><input type="checkbox" name="days" value="Monday" required> Monday</label>
                         <label><input type="checkbox" name="days" value="Tuesday"> Tuesday</label>
@@ -72,7 +74,7 @@
                         <label><input type="checkbox" name="days" value="Saturday"> Saturday</label>
                         <label><input type="checkbox" name="days" value="Sunday"> Sunday</label>
                     </div>
-                    <small class="hint">Select one or more days for delivery.</small>
+                   
                 </div>
                 <div class="form-group">
                     <label for="allergies">Allergies / Dietary Restrictions</label>
@@ -116,6 +118,109 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        // Form Validation for Subscription Form
+document.getElementById('subscriptionForm').addEventListener('submit', function (e) {
+    const mealTypes = document.querySelectorAll('input[name="mealType"]:checked');
+    const days = document.querySelectorAll('input[name="days"]:checked');
+    let valid = true;
+    let msg = '';
+
+    if (mealTypes.length === 0) {
+        valid = false;
+        msg += 'Please select at least one meal type.<br>';
+    }
+    if (days.length === 0) {
+        valid = false;
+        msg += 'Please select at least one delivery day.<br>';
+    }
+
+    if (!valid) {
+        e.preventDefault();
+        document.getElementById('form-message').innerHTML = msg;
+        document.getElementById('form-message').style.display = 'block';
+    } else {
+        document.getElementById('form-message').style.display = 'none';
+    }
+});
+
+// Calculate Total Price based on Plan, Meal Types, and Days
+const planPrices = {
+    diet: 30000,
+    protein: 40000,
+    royal: 60000
+};
+
+function formatRupiah(angka) {
+    return 'Rp' + angka.toLocaleString('id-ID');
+}
+
+function calculateTotalPrice() {
+    const plan = document.getElementById('plan').value;
+    const planPrice = planPrices[plan] || 0;
+    const mealTypes = document.querySelectorAll('input[name="mealType"]:checked').length;
+    const days = document.querySelectorAll('input[name="days"]:checked').length;
+
+    if (planPrice && mealTypes && days) {
+        const total = planPrice * mealTypes * days * 4.3;
+        document.getElementById('form-message').innerHTML = 'Total Price: <b>' + formatRupiah(total) + '</b>';
+        document.getElementById('form-message').style.display = 'block';
+    } else {
+        document.getElementById('form-message').innerHTML = '';
+        document.getElementById('form-message').style.display = 'none';
+    }
+}
+
+document.getElementById('plan').addEventListener('change', calculateTotalPrice);
+document.querySelectorAll('input[name="mealType"]').forEach(cb => cb.addEventListener('change', calculateTotalPrice));
+document.querySelectorAll('input[name="days"]').forEach(cb => cb.addEventListener('change', calculateTotalPrice));
+
+// Confirm Modal Logic
+const form = document.getElementById('subscriptionForm');
+const modal = document.getElementById('confirmModal');
+const btnYakin = document.getElementById('btnYakin');
+const btnKembali = document.getElementById('btnKembali');
+
+form.addEventListener('submit', function (e) {
+    const mealTypes = document.querySelectorAll('input[name="mealType"]:checked');
+    const days = document.querySelectorAll('input[name="days"]:checked');
+    let valid = true;
+    let msg = '';
+
+    if (mealTypes.length === 0) {
+        valid = false;
+        msg += 'Please select at least one meal type.<br>';
+    }
+    if (days.length === 0) {
+        valid = false;
+        msg += 'Please select at least one delivery day.<br>';
+    }
+
+    if (!valid) {
+        e.preventDefault();
+        document.getElementById('form-message').innerHTML = msg;
+        document.getElementById('form-message').style.display = 'block';
+    } else {
+        e.preventDefault();
+        modal.classList.add('active');
+    }
+});
+
+btnKembali.addEventListener('click', function () {
+    modal.classList.remove('active');
+});
+
+btnYakin.addEventListener('click', function () {
+    modal.classList.remove('active');
+    form.submit();
+
+     // Tampilkan pop up sukses
+            alert("Selamat Anda Telah Menjadi Member Kami. Cek Halaman Profile Untuk Update Paket Kamu");
+            // Redirect ke halaman login
+            window.location.href = "profile.html";
+});
     </script>
 </body>
 

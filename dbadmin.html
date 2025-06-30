@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SEA Catering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Main Content -->
+        <div class="main-content">
+             <!-- Header with title and date range -->
+            <header class="header">
+                <h1>SEA Catering - Admin Dashboard</h1>
+                <div class="filter-section">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" name="start-date">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" name="end-date">
+                    <button class="filter-button">Filter</button>
+                </div>
+
+                <!-- Logout button -->
+    <a href="index.html" class="logout">
+        <i data-feather="log-out"></i> Logout
+    </a>
+            </header>
+
+            <!-- Stats Cards -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h2>New Subscriptions</h2>
+                    <p class="stat-value" id="new-subscriptions">50</p>
+                    <a href="#">Details</a>
+                </div>
+                <div class="stat-card">
+                    <h2>Monthly Recurring Revenue (MRR)</h2>
+                    <p class="stat-value" id="mrr">$5000</p>
+                    <a href="#">Details</a>
+                </div>
+                <div class="stat-card">
+                    <h2>Reactivations</h2>
+                    <p class="stat-value" id="reactivations">10</p>
+                    <a href="#">Details</a>
+                </div>
+                <div class="stat-card">
+                    <h2>Subscription Growth</h2>
+                    <p class="stat-value" id="subscription-growth">200</p>
+                    <a href="#">Details</a>
+                </div>
+            </div>
+
+            <!-- Latest Transactions Section -->
+            <section class="latest-transactions">
+                <h3>Latest Transactions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Product</th>
+                            <th>Customer</th>
+                            <th>Value</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123456</td>
+                            <td>Premium Dashboard</td>
+                            <td>john.doe@example.com</td>
+                            <td>$150</td>
+                            <td>Aug 15 2023</td>
+                            <td><a href="#">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>123457</td>
+                            <td>Standard Dashboard</td>
+                            <td>jacob.rose@example.com</td>
+                            <td>$100</td>
+                            <td>Aug 14 2023</td>
+                            <td><a href="#">View</a></td>
+                        </tr>
+                        <!-- Add more transactions here -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Traffic Graph Section (this would usually be dynamic) -->
+            <section class="traffic-graph">
+                <h3>Traffic last 6 months</h3>
+                <!-- Include a placeholder graph here (use a charting library for dynamic graphs) -->
+                <div class="traffic-chart">
+                    <!-- Placeholder image for now -->
+                    <img src="image/meal/chart.png" alt="Traffic Chart">
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <span>&copy; 2025 SEA Catering. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+
+    <script src="js/script.js" type="text/javascript"></script>
+</body>
+
+</html>

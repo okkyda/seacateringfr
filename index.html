@@ -194,58 +194,60 @@
             </div>
         </div>
 
-       <div class="forms">
-    <section class="login-section">
-        <h2>Give Us Your Review</h2>
-        <form class="login-form" id="loginForm" autocomplete="off">
-            <!-- Username -->
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required placeholder="Username">
+        <div class="forms">
+            <section id="review-section"class="review">
+                <h2>Give Us Your Review</h2>
+                <form class="review-form" id="reviewForm" autocomplete="off">
+                    <!-- Username -->
+                    <div class="form-review-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="review-username" name="username" required placeholder="Username">
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-review-group">
+                        <label for="city">City</label>
+                        <input type="text" id="review-city" name="city" required placeholder="City">
+                    </div>
+
+                    <!-- Review Input -->
+                    <div class="form-review-group">
+                        <label for="review">Input Review</label>
+                        <textarea id="review-text" name="review" rows="2" placeholder="Your Honest Review"
+                            required></textarea>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="form-review-group">
+                        <label>Rating:</label>
+                        <div class="stars">
+                            <input type="radio" name="rating" id="star5" value="5">
+                            <label for="star5" class="star">&#9733;</label>
+                            <input type="radio" name="rating" id="star4" value="4">
+                            <label for="star4" class="star">&#9733;</label>
+                            <input type="radio" name="rating" id="star3" value="3">
+                            <label for="star3" class="star">&#9733;</label>
+                            <input type="radio" name="rating" id="star2" value="2">
+                            <label for="star2" class="star">&#9733;</label>
+                            <input type="radio" name="rating" id="star1" value="1">
+                            <label for="star1" class="star">&#9733;</label>
+                        </div>
+                    </div>
+
+                    <!-- Publish Button -->
+                    <button type="submit" class="btn-login">Publish</button>
+                </form>
+                <div id="review-message" class="form-message"></div>
+            </section>
+        </div>
+
+        <!-- Modal Konfirmasi -->
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content">
+                <p>Review Berhasil di publish</p>
+                <button id="closeModal" class="btn-submit">Close</button>
             </div>
-
-            <!-- City -->
-            <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" name="city" required placeholder="City">
-            </div>
-
-            <!-- Review Input -->
-            <div class="form-group">
-                <label for="review">Input Review</label>
-                <textarea id="review" name="review" rows="2" placeholder="Your Honest Review" required></textarea>
-            </div>
-
-            <!-- Rating -->
-            <div class="form-group">
-                <label>Rating:</label>
-                <div class="stars">
-                    <input type="radio" name="rating" id="star5" value="5">
-                    <label for="star5" class="star">&#9733;</label>
-                    <input type="radio" name="rating" id="star4" value="4">
-                    <label for="star4" class="star">&#9733;</label>
-                    <input type="radio" name="rating" id="star3" value="3">
-                    <label for="star3" class="star">&#9733;</label>
-                    <input type="radio" name="rating" id="star2" value="2">
-                    <label for="star2" class="star">&#9733;</label>
-                    <input type="radio" name="rating" id="star1" value="1">
-                    <label for="star1" class="star">&#9733;</label>
-                </div>
-            </div>
-
-            <!-- Publish Button -->
-            <button type="submit" class="btn-login">Publish</button>
-        </form>
-    </section>
-</div>
-
-<!-- Modal Konfirmasi -->
-<div id="confirmationModal" class="modal">
-    <div class="modal-content">
-        <p>Review Berhasil di publish</p>
-        <button id="closeModal" class="btn-submit">Close</button>
-    </div>
-</div>
+        </div>
 
     </section>
 
@@ -301,6 +303,65 @@
                 }
             });
         });
+    </script>
+
+    <script>
+     document.addEventListener('DOMContentLoaded', function () {
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewMessage = document.getElementById('review-message');
+
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('review-username').value.trim();
+            const city = document.getElementById('review-city').value.trim();
+            const review = document.getElementById('review-text').value.trim();
+            const rating = document.querySelector('input[name="rating"]:checked') ? document.querySelector('input[name="rating"]:checked').value : null;
+
+            if (!username || !city || !review || !rating) {
+                if (reviewMessage) {
+                    reviewMessage.innerHTML = 'Please fill out all fields and select a rating.';
+                    reviewMessage.style.display = 'block';
+                }
+                return;
+            } else if (reviewMessage) {
+                reviewMessage.innerHTML = '';
+                reviewMessage.style.display = 'none';
+            }
+
+            // Simpan review ke localStorage
+            const reviewData = { username, city, review, rating };
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            reviews.push(reviewData);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+
+            alert("Review berhasil dikirim!");
+            window.location.href = "index.html";
+        });
+    }
+
+    // Star Rating
+    const stars = document.querySelectorAll('.stars input[type="radio"]');
+    let ratingValue = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            ratingValue = this.value;
+            updateStars(ratingValue);
+        });
+    });
+
+    function updateStars(rating) {
+        stars.forEach(star => {
+            if (star.value <= rating) {
+                star.nextElementSibling.style.color = "#FFD600";
+            } else {
+                star.nextElementSibling.style.color = "#ddd";
+            }
+        });
+    }
+});
     </script>
 </body>
 
